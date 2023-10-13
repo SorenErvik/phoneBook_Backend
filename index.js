@@ -59,6 +59,19 @@ app.get('/', (request, response) => {
     response.send(`<p>Phonebook has info for ${numPeople} people</p><p>${new Date()}</p>`)
   })
 
+
+    app.post('/api/persons', (request, response) => {
+        const maxId = Math.floor(Math.random() * 1000000);
+      
+        const person = request.body
+        person.id = maxId; 
+      
+        persons = persons.concat(person)
+      
+        response.json(person)
+      })
+    
+
 const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
